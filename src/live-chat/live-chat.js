@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import {
   Stack,
   Chip,
@@ -13,6 +13,7 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 
 const LiveChat = (props) => {
+  const latestMessage = useRef();
   const [chatOpen, toggleChat] = useState(false);
   const toggleDrawer = () => toggleChat((open) => !open);
   const [messages, newMessage] = useState(() => [
@@ -63,16 +64,13 @@ const LiveChat = (props) => {
   }, [JSON.stringify(messages)]);
 
   useEffect(() => {
+    latestMessage.current && latestMessage.current.scrollIntoView();
     if (!messages || messages.slice(-1)[0].type !== "user") return;
     console.log(messages);
     generateReply();
   }, [JSON.stringify(messages), generateReply]);
 
-  const sendMessageHandler = (e) => {
-    console.log(e);
-    if (e.key === "Enter") addMessage();
-  };
-
+  const sendMessageHandler = (e) => (e.key === "Enter" ? addMessage() : null);
   return (
     <div className="live-chat">
       <Fab
@@ -105,10 +103,12 @@ const LiveChat = (props) => {
           </Toolbar>
         </AppBar>
         <Stack spacing={1} className="live-chat__message-panel">
-          {messages.map((message) => {
+          {messages.map((message, index) => {
             let props = {
               sx: { alignSelf: "flex-start" },
               classes: { label: "chat-bubble", root: "chat-bubble" },
+              ref: latestMessage,
+              key: index,
             };
             switch (message.type) {
               case "user":

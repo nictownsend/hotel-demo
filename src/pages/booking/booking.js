@@ -9,36 +9,50 @@ import {
   CardContent,
   CardActionArea,
   Box,
+  Alert,
 } from "@mui/material";
-import PersonIcon from "@mui/icons-material/Person";
 import moment from "moment";
 import { RoomsList } from "../rooms";
+import { useNavigate } from "react-router-dom";
 
-const Booking = (props) => {
+const Booking = () => {
   const [checkIn, setCheckIn] = useState(moment());
   const [checkOut, setCheckOut] = useState(moment());
   const now = moment();
-
+  const navigate = useNavigate();
+  const onSelectHandler = (id) => () => {
+    navigate(`/booking-form?id=${id}&checkin=${checkIn}&checkout=${checkOut}`);
+  };
   const [dates, updateDates] = useState("");
+  const [validDate, setValidDate] = useState(false);
+
   useEffect(() => {
+    const nights = checkOut.diff(checkIn.clone().subtract(1, "minute"), "days");
+    nights > 0 ? setValidDate(true) : setValidDate(false);
     updateDates(
       `${checkIn.format("DD/MM/YY")} - ${checkOut.format(
         "DD/MM/YY"
-      )} (${checkOut.diff(
-        checkIn.clone().subtract(1, "minute"),
-        "days"
-      )} nights)`
+      )} (${nights} nights)`
     );
   }, [checkIn, checkOut]);
   return (
-    <Grid container spacing={1}>
+    <Grid
+      container
+      spacing={5}
+      sx={{
+        flexDirection: { xs: "column", sm: "row" },
+      }}
+    >
       <Grid
         item
         container
-        xs="4"
-        sm="2"
-        spacing={1}
-        sx={{ alignItems: "flex-start" }}
+        xs={12}
+        sm={4}
+        spacing={3}
+        sx={{
+          flexDirection: { xs: "row", sm: "column" },
+          justifyContent: { xs: "space-around", sm: "flex-start" },
+        }}
       >
         <Grid item>
           <DatePicker
@@ -61,30 +75,44 @@ const Booking = (props) => {
           />
         </Grid>
       </Grid>
-      <Grid item xs="8" sm="9">
-        <Stack spacing={1}>
-          <Typography>{`Rooms available for ${dates}`}</Typography>
-          {RoomsList.map((room) => (
-            <Card variant="outlined">
-              <CardActionArea>
-                <CardContent>
-                  <Typography>{room.title}</Typography>
-                  <Typography variant="caption">{room.summary}</Typography>
-                  <Box>
-                    <Typography
-                      variant="caption"
-                      sx={{ alignItems: "center", display: "flex" }}
-                    >
-                      Sleeps: {room.icon.map(React.createElement)}
-                    </Typography>
-                  </Box>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          ))}
-        </Stack>
+      <Grid item xs={12} sm={8}>
+        {validDate ? (
+          <>
+            <Typography>{`Rooms available for ${dates}`}</Typography>
+            <Stack spacing={1} sx={{ maxHeight: "40rem", overflow: "auto" }}>
+              {RoomsList.map((room, index) => (
+                <Card
+                  variant="outlined"
+                  key={index}
+                  sx={{ overflow: "initial" }}
+                  onClick={onSelectHandler(index)}
+                >
+                  <CardActionArea>
+                    <CardContent>
+                      <Typography>{room.title}</Typography>
+                      <Typography variant="caption">{room.summary}</Typography>
+                      <Box>
+                        <Typography
+                          variant="caption"
+                          sx={{ alignItems: "center", display: "flex" }}
+                        >
+                          Sleeps:{" "}
+                          {room.icon.map((icon, index) =>
+                            React.createElement(icon, { key: index })
+                          )}
+                        </Typography>
+                      </Box>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              ))}
+            </Stack>
+          </>
+        ) : (
+          <Alert severity="error">Please select a valid date range</Alert>
+        )}
       </Grid>
-      <Grid item sm="1" />
+      {/* <Grid item sm="1" /> */}
     </Grid>
   );
 };

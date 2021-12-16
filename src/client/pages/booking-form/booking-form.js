@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Grid, Button, Alert, Stack, Typography } from "@mui/material";
 import { RoomsList } from "../rooms";
@@ -12,8 +12,27 @@ const BookingForm = () => {
   const checkIn = moment(searchParams.get("checkin"));
   const checkOut = moment(searchParams.get("checkout"));
   const id = parseInt(searchParams.get("id"));
+  const [bookingRef, confirmBooking] = useState("");
+  const makeBooking = async (values, { setSubmitting }) => {
+    await fetch("/booking", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    })
+      .then((res) => res.json())
+      .then(confirmBooking);
+  };
 
-  return (
+  return bookingRef ? (
+    <Stack spacing={1}>
+      <Alert severity="success">Booking successful</Alert>
+      <Typography
+        variant={"h6"}
+      >{`Booking reference : ${bookingRef}`}</Typography>
+    </Stack>
+  ) : (
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <Typography variant="h6">{`Selected room: ${RoomsList[id].title}`}</Typography>
@@ -51,12 +70,6 @@ const BookingForm = () => {
             }
             return errors;
           }}
-          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
-            }, 400);
-          }}
           initialValues={{
             email: "",
             line1: "",
@@ -66,6 +79,7 @@ const BookingForm = () => {
             postcode: "",
             mobile: "",
           }}
+          onSubmit={makeBooking}
         >
           {({
             values,

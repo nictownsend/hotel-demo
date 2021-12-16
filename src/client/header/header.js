@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../images/logo.png";
+import Logo from "../../images/logo.png";
 import { Grid } from "@mui/material";
 const Header = (props) => (
   <Grid className="header" container>

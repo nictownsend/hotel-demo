@@ -77,6 +77,12 @@ const LiveChat = (props) => {
         variant="extended"
         className="live-chat__button"
         onClick={toggleDrawer}
+        sx={{
+          right: {
+            xs: "1rem",
+            lg: "25%",
+          },
+        }}
       >
         Live Chat available
       </Fab>
@@ -86,6 +92,7 @@ const LiveChat = (props) => {
         anchor="bottom"
         PaperProps={{
           className: "live-chat__window",
+          sx: { width: { xs: 1, sm: 1 / 2 } },
         }}
       >
         <AppBar position="static">

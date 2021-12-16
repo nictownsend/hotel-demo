@@ -15,14 +15,12 @@
 .live-chat {
   &__button {
     position: fixed !important;
-    right: 1rem;
     bottom: 1rem;
   }
 
   &__window {
     padding: 0 !important;
     margin: 0 !important;
-    width: 25rem !important;
     left: auto !important;
     height: 25rem !important;
     display: flex;

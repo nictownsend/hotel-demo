@@ -22,7 +22,15 @@ const BookingForm = () => {
       body: JSON.stringify(values),
     })
       .then((res) => res.json())
-      .then(confirmBooking);
+      .then((json) => {
+        console.log(json);
+        confirmBooking({
+          ...json,
+          checkIn: `${checkIn.format("DD/MM/YY")}`,
+          checkOut: `${checkOut.format("DD/MM/YY")}`,
+          room: RoomsList[id].title,
+        });
+      });
   };
 
   return bookingRef ? (
@@ -30,7 +38,16 @@ const BookingForm = () => {
       <Alert severity="success">Booking successful</Alert>
       <Typography
         variant={"h6"}
-      >{`Booking reference : ${bookingRef}`}</Typography>
+      >{`Booking reference : ${bookingRef.id}`}</Typography>
+      <Typography
+        variant={"subtitle1"}
+      >{`Check in: ${bookingRef.checkIn}`}</Typography>
+      <Typography
+        variant={"subtitle1"}
+      >{`Check in: ${bookingRef.checkOut}`}</Typography>
+      <Typography
+        variant={"subtitle1"}
+      >{`Room: ${bookingRef.room}`}</Typography>
     </Stack>
   ) : (
     <Grid container spacing={2}>
@@ -78,6 +95,7 @@ const BookingForm = () => {
             county: "",
             postcode: "",
             mobile: "",
+            name: "",
           }}
           onSubmit={makeBooking}
         >
@@ -98,6 +116,17 @@ const BookingForm = () => {
               ) : null}
               <Form>
                 <Stack spacing={2}>
+                  <Field
+                    component={TextField}
+                    type="name"
+                    name="name"
+                    label="Name"
+                    required
+                    onBlur={handleBlur}
+                    value={values.name}
+                    error={touched.name && errors.name ? true : false}
+                    helperText={errors.name}
+                  />
                   <Field
                     component={TextField}
                     type="email"
@@ -176,7 +205,12 @@ const BookingForm = () => {
                     error={touched.mobile && errors.mobile ? true : false}
                     helperText={touched.mobile && errors.mobile}
                   />
-                  <Button onClick={handleSubmit} disabled={isSubmitting}>
+                  <Button
+                    variant="contained"
+                    onClick={handleSubmit}
+                    disabled={isSubmitting}
+                    sx={{ alignSelf: "flex-start" }}
+                  >
                     Submit
                   </Button>
                 </Stack>

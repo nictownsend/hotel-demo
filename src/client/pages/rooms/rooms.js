@@ -3,12 +3,19 @@ import {
   Card,
   Grid,
   Button,
-  Modal,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
   CardContent,
   CardActions,
+  IconButton,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import PersonIcon from "@mui/icons-material/Person";
+import CloseIcon from "@mui/icons-material/Close";
 import NightsStayIcon from "@mui/icons-material/NightsStay";
 import BungalowIcon from "@mui/icons-material/Bungalow";
 import ShowerIcon from "@mui/icons-material/Shower";
@@ -55,6 +62,8 @@ const Rooms = (props) => {
     setOpen((open) => !open);
     updateModal(room || {});
   };
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <>
       <Grid container spacing="20">
@@ -64,15 +73,24 @@ const Rooms = (props) => {
           </Grid>
         ))}
       </Grid>
-      <Modal open={open} onClose={handler()}>
-        <Grid container className="modal">
-          <Grid item>
-            <Card>
-              <CardContent>{modal.title}</CardContent>
-            </Card>
-          </Grid>
-        </Grid>
-      </Modal>
+      <Dialog open={open} onClose={handler()} fullScreen={fullScreen}>
+        <DialogTitle>
+          {modal.title}
+          <IconButton
+            aria-label="close"
+            onClick={handler()}
+            sx={{
+              position: "absolute",
+              right: 8,
+              top: 8,
+              color: (theme) => theme.palette.grey[500],
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent>Photo plus summary here please</DialogContent>
+      </Dialog>
     </>
   );
 };

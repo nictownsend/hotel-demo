@@ -1,5 +1,4 @@
 import { Grid } from "@mui/material";
-import { NavBar } from "./navbar";
 import { Content } from "./content";
 import { Header } from "./header";
 import { Footer } from "./footer";
@@ -29,11 +28,8 @@ const App = () => {
       <LocalizationProvider dateAdapter={DateAdapter} locale={enLocale}>
         <BrowserRouter>
           <Grid container>
-            <Grid item sx={{ display: { xs: "none", sm: "block" } }} xs={12}>
-              <Header />
-            </Grid>
             <Grid item xs={12}>
-              <NavBar />
+              <Header />
             </Grid>
             <Grid item sm={0.5} md={2} lg={3} />
             <Grid item xs={12} sm={11} md={8} lg={6}>

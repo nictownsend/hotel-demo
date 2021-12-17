@@ -14,21 +14,25 @@ const BookingForm = () => {
   const id = parseInt(searchParams.get("id"));
   const [bookingRef, confirmBooking] = useState("");
   const makeBooking = async (values, { setSubmitting }) => {
+    const body = {
+      ...values,
+      checkIn: `${checkIn.format("DD/MM/YY")}`,
+      checkOut: `${checkOut.format("DD/MM/YY")}`,
+      room: RoomsList[id].title,
+    };
     await fetch("/booking", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(values),
+      body: JSON.stringify(body),
     })
       .then((res) => res.json())
       .then((json) => {
         console.log(json);
         confirmBooking({
           ...json,
-          checkIn: `${checkIn.format("DD/MM/YY")}`,
-          checkOut: `${checkOut.format("DD/MM/YY")}`,
-          room: RoomsList[id].title,
+          ...body,
         });
       });
   };

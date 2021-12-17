@@ -12,6 +12,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/system";
 import MenuIcon from "@mui/icons-material/Menu";
+import { ReactComponent as Logo } from "../../images/logo-sm.svg";
 
 const pages = [
   { title: "Home", path: "/" },
@@ -32,52 +33,49 @@ const NavBar = () => {
     fromMenu && toggleMenu();
   };
   return (
-    <AppBar position="static" variant="dense">
-      <Toolbar sx={{ justifyContent: "space-around" }}>
-        <Box sx={{ display: { xs: "none", sm: "block" } }}>
-          {pages.map((page, index) => (
-            <Button onClick={navigateHandler(page)} color="inherit" key={index}>
-              {page.title}
-            </Button>
-          ))}
-        </Box>
-        <Box
-          sx={{
-            display: { xs: "flex", sm: "none" },
-            flexGrow: 1,
-            alignItems: "center",
-          }}
+    <AppBar position="static">
+      <Box
+        sx={{
+          display: { xs: "flex", sm: "none" },
+          justifyContent: "space-between",
+          backgroundColor: { xs: "black" },
+        }}
+      >
+        <Logo style={{ fill: "white", height: "4rem" }} />
+        <IconButton
+          size="large"
+          ref={anchorEl}
+          onClick={toggleMenu}
+          color="inherit"
         >
-          <IconButton
-            size="large"
-            ref={anchorEl}
-            onClick={toggleMenu}
-            color="inherit"
-          >
-            <MenuIcon />
-          </IconButton>
-          <Stack sx={{ flexGrow: 1, alignItems: "center" }}>
-            <Typography variant="subtitle1">Townsend Hotels</Typography>
-            <Typography variant="caption">
-              When you stay with us, you're family
-            </Typography>
-          </Stack>
-          <Menu
-            color="inherit"
-            keepMounted
-            open={menuOpen}
-            anchorEl={anchorEl.current}
-            onClose={toggleMenu}
-          >
-            {pages.map((page, index) => (
-              <MenuItem key={index} onClick={navigateHandler(page, true)}>
-                <Typography component={Typography} to={page.path} key={index}>
-                  {page.title}
-                </Typography>
-              </MenuItem>
-            ))}
-          </Menu>
-        </Box>
+          <MenuIcon />
+        </IconButton>
+        <Menu
+          color="inherit"
+          keepMounted
+          open={menuOpen}
+          anchorEl={anchorEl.current}
+          onClose={toggleMenu}
+        >
+          {pages.map((page, index) => (
+            <MenuItem key={index} onClick={navigateHandler(page, true)}>
+              <Typography component={Typography} to={page.path} key={index}>
+                {page.title}
+              </Typography>
+            </MenuItem>
+          ))}
+        </Menu>
+      </Box>
+      <Toolbar
+        sx={{
+          display: { xs: "none", sm: "block" },
+        }}
+      >
+        {pages.map((page, index) => (
+          <Button onClick={navigateHandler(page)} color="inherit" key={index}>
+            {page.title}
+          </Button>
+        ))}
       </Toolbar>
     </AppBar>
   );

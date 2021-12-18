@@ -7,7 +7,7 @@
     }
   },
   "api": {
-    "backend": {
+    "api": {
       "service": "API Gateway",
       "providerPlugin": "awscloudformation",
       "dependsOn": [

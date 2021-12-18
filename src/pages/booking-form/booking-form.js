@@ -31,6 +31,7 @@ const BookingForm = () => {
   const id = parseInt(searchParams.get("id"));
   const [bookingRef, confirmBooking] = useState("");
   const [termsOpen, showTerms] = useState(false);
+  const [error, setError] = useState({});
   const toggleTerms = (e) => {
     e.preventDefault();
     showTerms((open) => !open);
@@ -56,6 +57,10 @@ const BookingForm = () => {
           ...json,
           ...body,
         });
+      })
+      .catch((e) => {
+        console.error(e);
+        setError(e);
       });
   };
 
@@ -79,6 +84,11 @@ const BookingForm = () => {
         </Stack>
       ) : (
         <Grid container spacing={2}>
+          <Grid item xs={12}>
+            {error ? (
+              <Alert severity="error">{JSON.stringify(error)}</Alert>
+            ) : null}
+          </Grid>
           <Grid item xs={12}>
             <Typography variant="h6">{`Selected room: ${RoomsList[id].title}`}</Typography>
             <Typography variant="h6">

@@ -47,7 +47,7 @@ const Booking = () => {
         item
         container
         xs={12}
-        sm={4}
+        md={4}
         spacing={3}
         sx={{
           flexDirection: { xs: "row", sm: "column" },
@@ -75,11 +75,11 @@ const Booking = () => {
           />
         </Grid>
       </Grid>
-      <Grid item xs={12} sm={8}>
+      <Grid item xs={12} md={8}>
         {validDate ? (
           <>
             <Typography>{`Rooms available for ${dates}`}</Typography>
-            <Stack spacing={1} sx={{ maxHeight: "40rem", overflow: "auto" }}>
+            <Stack spacing={1} sx={{ maxHeight: "50rem", overflow: "auto" }}>
               {RoomsList.map((room, index) => (
                 <Card
                   variant="outlined"
@@ -90,7 +90,7 @@ const Booking = () => {
                   <CardActionArea>
                     <CardContent>
                       <Typography>{room.title}</Typography>
-                      <Typography variant="caption">{room.summary}</Typography>
+                      <Typography variant="caption">{room.headline}</Typography>
                       <Box>
                         <Typography
                           variant="caption"

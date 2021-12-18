@@ -12,6 +12,7 @@ import {
   useMediaQuery,
   useTheme,
   Typography,
+  circularProgressClasses,
 } from "@mui/material";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import PersonIcon from "@mui/icons-material/Person";
@@ -23,34 +24,52 @@ import MenuBookIcon from "@mui/icons-material/MenuBook";
 
 const RoomsList = [
   {
-    title: "Wizard experience",
-    summary: "A cosy room under the stairs",
+    title: "Wizard",
+    headline: "As lucky as Harry",
+    summary:
+      "This freshly fragranced cosy space is ideal for those soffering from covid. With an adjacent bathroom you can enjoy all the sounds and smells of your fellow guests.",
     icon: [AutoFixHighIcon],
   },
   {
     title: "The Attic Suite",
+    headline: "Mind your head",
     icon: [BungalowIcon],
-    summary: "The warmest place in hotel, but mind your head",
+    summary:
+      "Squirrels and spiders and bats, oh my! Sleep among the eaves in this rustic paradise. Cobwebs offer perfect insulation in the spacacious room, but don't worry - the missing lead means there's plenty of ventilation.",
   },
   {
     title: "Glamping",
-    summary: "Experience the great outdoors",
+    headline: "Bring an umbrella",
+    summary:
+      "Experience the great outdoors in our glamping area. With views across the fence into a wide open forest, who knows who might be watching you back at night.",
     icon: [NightsStayIcon, NightsStayIcon],
   },
   {
     title: "The Royal Chamber",
-    summary: "Don't forget to flush",
+    headline: "Don't forget to flush",
+    summary:
+      "Recently decorated, the Royal Chamber has the unique benefit of being the only room that is fit for purpose. Decor taken straight from a council house, you never have to worry about scuffing walls or staining the floor, it's already been done for you!",
     icon: [ShowerIcon],
   },
   {
     title: "The Spare",
-    summary: "Size doesn't matter",
+    headline: "Size doesn't matter",
+    summary:
+      "'The Heir and the Spare' - such as in royal circles, the spare is just as equaly unloved and forgotten about. Carpets not replaced, cracks patched badly, and paint job from at least 10 years ago, this is the place no-one wants to be.",
     icon: [PersonIcon, PersonIcon],
   },
-  { title: "The Nook", summary: "Bedtime reading", icon: [MenuBookIcon] },
   {
-    title: "The Master",
-    summary: "A safe bet when you need to reinvigorate a tired formula",
+    title: "The Nook",
+    headline: "Bedtime reading",
+    icon: [MenuBookIcon],
+    summary:
+      "With just enough space to swing a cat (not that we've tried), the nook is perfect for those who prefer the company of books to real people.",
+  },
+  {
+    title: "The Main Act",
+    headline: "Room for two",
+    summary:
+      "With a double bed and a super king duvet, you'll want to stay in bed for you're whole visit (partially as the heating won't be on).",
     icon: [PersonIcon, PersonIcon],
   },
 ];
@@ -89,13 +108,15 @@ const Rooms = (props) => {
             <CloseIcon />
           </IconButton>
         </DialogTitle>
-        <DialogContent>Photo plus summary here please</DialogContent>
+        <DialogContent>
+          <Typography>{modal.summary}</Typography>
+        </DialogContent>
       </Dialog>
     </>
   );
 };
 
-const createRoom = ({ title }, moreDetails) => (
+const createRoom = ({ title, headline }, moreDetails) => (
   <Card
     sx={{
       height: "15rem",
@@ -108,9 +129,7 @@ const createRoom = ({ title }, moreDetails) => (
       <Typography gutterBottom variant="h5" component="h2">
         {title}
       </Typography>
-      <Typography>
-        This is a media card. You can use this section to describe the content.
-      </Typography>
+      <Typography>{headline}</Typography>
     </CardContent>
     <CardActions>
       <Button size="small" onClick={moreDetails}>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg viewBox="0 0 818.056 200" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="100 0 777.431 200" xmlns="http://www.w3.org/2000/svg" >
   <defs>
     <style >@import url(https://fonts.googleapis.com/css2?family=IBM+Plex+Sans%3Aital%2Cwght%400%2C100%3B0%2C200%3B0%2C300%3B0%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B1%2C100%3B1%2C200%3B1%2C300%3B1%2C400%3B1%2C500%3B1%2C600%3B1%2C700&amp;display=swap);</style>
     <style >@import url(https://fonts.googleapis.com/css2?family=Roboto+Mono%3Aital%2Cwght%400%2C100%3B0%2C200%3B0%2C300%3B0%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B1%2C100%3B1%2C200%3B1%2C300%3B1%2C400%3B1%2C500%3B1%2C600%3B1%2C700&amp;display=swap);</style>
     <style >@import url(https://fonts.googleapis.com/css2?family=Roboto%3Aital%2Cwght%400%2C100%3B0%2C300%3B0%2C400%3B0%2C500%3B0%2C700%3B0%2C900%3B1%2C100%3B1%2C300%3B1%2C400%3B1%2C500%3B1%2C700%3B1%2C900&amp;display=swap);</style>
   </defs>
-  <g transform="matrix(6.194934, 0, 0, 6.194934, 76.61013, 25.777779)">
+  <g transform="matrix(6.194934, 0, 0, 6.194934, 132.166489, 25.777779)">
     <g/>
     <g>
       <g>
@@ -16,5 +16,5 @@
       </g>
     </g>
   </g>
-  <text style="font-family: Roboto; font-size: 61px; text-anchor: middle; white-space: pre;" transform="matrix(1, 0, 0, 1, 402.883972, 91.185776)"><tspan x="143.328" y="29.745">Townsend Hotels</tspan><tspan x="143.328" dy="1em">​</tspan><tspan x="143.328" dy="1em">​</tspan></text>
+  <text style="font-family: Roboto; font-size: 61px; text-anchor: middle; white-space: pre;" transform="matrix(1, 0, 0, 1, 420.806, 88.662384)"><tspan x="143.328" y="29.745">Townsend Hotels</tspan><tspan x="143.328" dy="1em">​</tspan><tspan x="143.328" dy="1em">​</tspan></text>
 </svg>

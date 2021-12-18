@@ -12,12 +12,10 @@ import {
 import { useNavigate } from "react-router-dom";
 import { Box } from "@mui/system";
 import MenuIcon from "@mui/icons-material/Menu";
-import { ReactComponent as Logo } from "../../images/logo-sm.svg";
-
 const pages = [
   { title: "Home", path: "/" },
   { title: "Book Now", path: "/book" },
-  { title: "About Us", path: "/about" },
+  { title: "Meet the Team", path: "/about" },
   { title: "Our Rooms", path: "/rooms" },
   { title: "Christmas 2021", path: "/xmas-2021" },
   { title: "Testimonials", path: "/testimonials" },
@@ -33,19 +31,18 @@ const NavBar = () => {
     fromMenu && toggleMenu();
   };
   return (
-    <AppBar position="static">
+    <>
       <Box
         sx={{
           display: { xs: "flex", sm: "none" },
-          justifyContent: "space-between",
+          justifyContent: "flex-end",
         }}
       >
-        <Logo style={{ fill: "white", height: "4rem" }} />
         <IconButton
           size="large"
           ref={anchorEl}
           onClick={toggleMenu}
-          color="inherit"
+          sx={{ color: "white" }}
         >
           <MenuIcon />
         </IconButton>
@@ -65,20 +62,25 @@ const NavBar = () => {
           ))}
         </Menu>
       </Box>
-      <Toolbar
+      <Stack
         sx={{
           display: { xs: "none", sm: "flex" },
           backgroundColor: "primary.main",
           alignItems: "center",
         }}
+        direction="row"
       >
         {pages.map((page, index) => (
-          <Button onClick={navigateHandler(page)} color="inherit" key={index}>
+          <Button
+            onClick={navigateHandler(page)}
+            sx={{ color: "white" }}
+            key={index}
+          >
             {page.title}
           </Button>
         ))}
-      </Toolbar>
-    </AppBar>
+      </Stack>
+    </>
   );
 };
 

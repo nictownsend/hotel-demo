@@ -38,7 +38,6 @@ const NavBar = () => {
         sx={{
           display: { xs: "flex", sm: "none" },
           justifyContent: "space-between",
-          backgroundColor: { xs: "black" },
         }}
       >
         <Logo style={{ fill: "white", height: "4rem" }} />
@@ -68,7 +67,9 @@ const NavBar = () => {
       </Box>
       <Toolbar
         sx={{
-          display: { xs: "none", sm: "block" },
+          display: { xs: "none", sm: "flex" },
+          backgroundColor: "primary.main",
+          alignItems: "center",
         }}
       >
         {pages.map((page, index) => (

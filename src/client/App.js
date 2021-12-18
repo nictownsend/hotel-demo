@@ -2,6 +2,7 @@ import { Grid } from "@mui/material";
 import { Content } from "./content";
 import { Header } from "./header";
 import { Footer } from "./footer";
+import { Hero } from "./hero";
 import { BrowserRouter } from "react-router-dom";
 import React from "react";
 import "./App.scss";
@@ -10,6 +11,7 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import { LiveChat } from "./live-chat";
 import { enLocale } from "moment/locale/en-gb";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { Routes, Route } from "react-router-dom";
 
 const theme = createTheme({
   palette: {
@@ -31,11 +33,16 @@ const App = () => {
             <Grid item xs={12}>
               <Header />
             </Grid>
-            <Grid item sm={0.5} md={2} lg={3} />
-            <Grid item xs={12} sm={11} md={8} lg={6}>
+            <Grid item xs={12}>
+              <Routes>
+                <Route path="/" element={<Hero />} />
+              </Routes>
+            </Grid>
+            <Grid item lg={3} />
+            <Grid item lg={6}>
               <Content />
             </Grid>
-            <Grid item sm={0.5} md={2} lg={3} />
+            <Grid item lg={3} />
             <Grid item xs={12}>
               <Footer />
             </Grid>

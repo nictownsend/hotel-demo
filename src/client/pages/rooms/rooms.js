@@ -6,12 +6,12 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions,
   CardContent,
   CardActions,
   IconButton,
   useMediaQuery,
   useTheme,
+  Typography,
 } from "@mui/material";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import PersonIcon from "@mui/icons-material/Person";
@@ -68,7 +68,7 @@ const Rooms = (props) => {
     <>
       <Grid container spacing="20">
         {RoomsList.map((room, index) => (
-          <Grid item key={`room-${index}`}>
+          <Grid item key={`room-${index}`} xs={12} sm={6} md={4}>
             {createRoom(room, handler(room))}
           </Grid>
         ))}
@@ -96,8 +96,22 @@ const Rooms = (props) => {
 };
 
 const createRoom = ({ title }, moreDetails) => (
-  <Card>
-    <CardContent>{title}</CardContent>
+  <Card
+    sx={{
+      height: "15rem",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+    }}
+  >
+    <CardContent>
+      <Typography gutterBottom variant="h5" component="h2">
+        {title}
+      </Typography>
+      <Typography>
+        This is a media card. You can use this section to describe the content.
+      </Typography>
+    </CardContent>
     <CardActions>
       <Button size="small" onClick={moreDetails}>
         Learn More

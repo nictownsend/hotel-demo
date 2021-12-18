@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { Box } from "@mui/material";
 import {
   Home,
   About,
@@ -10,7 +11,7 @@ import {
   BookingForm,
 } from "../pages";
 const Content = (props) => (
-  <div className="content">
+  <Box sx={{ padding: "2rem" }}>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
@@ -20,6 +21,6 @@ const Content = (props) => (
       <Route path="/xmas-2021" element={<Xmas />} />
       <Route path="/testimonials" element={<Testimonials />} />
     </Routes>
-  </div>
+  </Box>
 );
 export { Content };

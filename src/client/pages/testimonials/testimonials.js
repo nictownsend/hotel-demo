@@ -1,28 +1,47 @@
-import { Card, CardContent, Grid } from "@mui/material";
+import { Box, Card, CardContent, Stack, Typography } from "@mui/material";
 import React from "react";
+import StarRateIcon from "@mui/icons-material/StarRate";
+
+const testimonials = [
+  {
+    rating: 3,
+    name: "Bruno",
+    location: "Southampton",
+    title: "My review",
+    review: "Meow, meow, meow",
+  },
+];
 
 const Testimonials = (props) => (
-  <Grid container>
-    <Grid item>
-      <Card>
-        <CardContent>Bruno, 9, Southampton, 'Meow'</CardContent>
-      </Card>
-    </Grid>
+  <Stack>
+    {testimonials.map(({ review, title, rating, name, location }, index) => {
+      return (
+        <Card key={index}>
+          <CardContent>
+            <Typography variant="h6">{title}</Typography>
 
-    <Grid item>
-      <Card>
-        <CardContent>Millie, 4 months, Hampshire, 'A-bu-bu-bu!'</CardContent>
-      </Card>
-    </Grid>
+            <Typography variant="body2">{review}</Typography>
 
-    <Grid item>
-      <Card>
-        <CardContent>
-          Squirrel, 2, Backyard, 'Tasy lead, 11/10 would eat again'
-        </CardContent>
-      </Card>
-    </Grid>
-  </Grid>
+            <Stack direction="row" spacing={1} sx={{ alignItems: "center" }}>
+              <Box>
+                {Array(rating)
+                  .fill(0)
+                  .map((_, index) => (
+                    <StarRateIcon
+                      key={index}
+                      sx={{ fill: "text.secondary", fontSize: 15 }}
+                    />
+                  ))}
+              </Box>
+              <Typography variant="caption" color="text.secondary">
+                {`${name}, ${location}`}
+              </Typography>
+            </Stack>
+          </CardContent>
+        </Card>
+      );
+    })}
+  </Stack>
 );
 
 export { Testimonials };

@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Grid, Button, Alert, Stack, Typography } from "@mui/material";
+import {
+  Grid,
+  Button,
+  Alert,
+  Stack,
+  Typography,
+  Checkbox,
+  Link,
+} from "@mui/material";
 import { RoomsList } from "../rooms";
 import moment from "moment";
 import { Formik, Form, Field } from "formik";
@@ -100,6 +108,7 @@ const BookingForm = () => {
             postcode: "",
             mobile: "",
             name: "",
+            terms: false,
           }}
           onSubmit={makeBooking}
         >
@@ -209,6 +218,11 @@ const BookingForm = () => {
                     error={touched.mobile && errors.mobile ? true : false}
                     helperText={touched.mobile && errors.mobile}
                   />
+                  <Field
+                    component={Checkbox}
+                    sx={{ alignSelf: "flex-start" }}
+                    label="Terms"
+                  />
                   <Button
                     variant="contained"
                     onClick={handleSubmit}
@@ -218,6 +232,9 @@ const BookingForm = () => {
                     Submit
                   </Button>
                 </Stack>
+                <Typography>
+                  <Link>Terms and Conditions</Link>
+                </Typography>
               </Form>
             </Stack>
           )}

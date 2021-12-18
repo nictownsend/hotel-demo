@@ -1,21 +1,27 @@
 {
-  "dev": {
+  "staging": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-townsendhotel-dev-224743-authRole",
-      "UnauthRoleArn": "arn:aws:iam::003264026068:role/amplify-townsendhotel-dev-224743-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::003264026068:role/amplify-townsendhotel-dev-224743-authRole",
+      "AuthRoleName": "amplify-townsendhotel-staging-230634-authRole",
+      "UnauthRoleArn": "arn:aws:iam::923669737420:role/amplify-townsendhotel-staging-230634-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::923669737420:role/amplify-townsendhotel-staging-230634-authRole",
       "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-townsendhotel-dev-224743-deployment",
-      "UnauthRoleName": "amplify-townsendhotel-dev-224743-unauthRole",
-      "StackName": "amplify-townsendhotel-dev-224743",
-      "StackId": "arn:aws:cloudformation:us-east-2:003264026068:stack/amplify-townsendhotel-dev-224743/85235f50-6054-11ec-94b5-069e6c6ac232",
-      "AmplifyAppId": "d30gd75196omcg"
+      "DeploymentBucketName": "amplify-townsendhotel-staging-230634-deployment",
+      "UnauthRoleName": "amplify-townsendhotel-staging-230634-unauthRole",
+      "StackName": "amplify-townsendhotel-staging-230634",
+      "StackId": "arn:aws:cloudformation:us-east-2:923669737420:stack/amplify-townsendhotel-staging-230634/25a9d0b0-6057-11ec-b606-0293ac8b1b7a",
+      "AmplifyAppId": "d21ju5e79v3n2l"
     },
     "categories": {
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d21ju5e79v3n2l",
+          "type": "cicd"
+        }
+      },
       "function": {
         "api": {
-          "deploymentBucketName": "amplify-townsendhotel-dev-224743-deployment",
-          "s3Key": "amplify-builds/api-77634351786269505451-build.zip"
+          "deploymentBucketName": "amplify-townsendhotel-staging-230634-deployment",
+          "s3Key": "amplify-builds/api-507166514f714d6a394f-build.zip"
         }
       }
     }

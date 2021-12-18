@@ -43,7 +43,7 @@ const BookingForm = () => {
       checkOut: `${checkOut.format("DD/MM/YY")}`,
       room: RoomsList[id].title,
     };
-    await fetch("/booking", {
+    await fetch("/api/booking", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

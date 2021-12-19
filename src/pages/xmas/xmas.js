@@ -42,6 +42,8 @@ const Xmas = () => (
           <br />
           Topside of Beef
           <br />
+          Honey glazed Gammon
+          <br />
           All the trimmings!
           <br />
         </Typography>

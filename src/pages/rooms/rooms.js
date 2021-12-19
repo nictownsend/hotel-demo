@@ -12,7 +12,9 @@ import {
   useMediaQuery,
   useTheme,
   Typography,
-  circularProgressClasses,
+  CardMedia,
+  CardHeader,
+  Stack,
 } from "@mui/material";
 import AutoFixHighIcon from "@mui/icons-material/AutoFixHigh";
 import PersonIcon from "@mui/icons-material/Person";
@@ -21,6 +23,13 @@ import NightsStayIcon from "@mui/icons-material/NightsStay";
 import BungalowIcon from "@mui/icons-material/Bungalow";
 import ShowerIcon from "@mui/icons-material/Shower";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
+import attic from "../../images/attic.jpeg";
+import glamping from "../../images/glamping.jpeg";
+import master from "../../images/master.jpeg";
+import nook from "../../images/nook.jpeg";
+import spare from "../../images/spare.jpeg";
+import stairs from "../../images/stairs.jpeg";
+import throne from "../../images/throne.jpeg";
 
 const RoomsList = [
   {
@@ -29,6 +38,7 @@ const RoomsList = [
     summary:
       "This freshly fragranced cosy space is ideal for those soffering from covid. With an adjacent bathroom you can enjoy all the sounds and smells of your fellow guests.",
     icon: [AutoFixHighIcon],
+    hero: stairs,
   },
   {
     title: "The Attic Suite",
@@ -36,6 +46,7 @@ const RoomsList = [
     icon: [BungalowIcon],
     summary:
       "Squirrels and spiders and bats, oh my! Sleep among the eaves in this rustic paradise. Cobwebs offer perfect insulation in the spacacious room, but don't worry - the missing lead means there's plenty of ventilation.",
+    hero: attic,
   },
   {
     title: "Glamping",
@@ -43,6 +54,7 @@ const RoomsList = [
     summary:
       "Experience the great outdoors in our glamping area. With views across the fence into a wide open forest, who knows who might be watching you back at night.",
     icon: [NightsStayIcon, NightsStayIcon],
+    hero: glamping,
   },
   {
     title: "The Royal Chamber",
@@ -50,6 +62,7 @@ const RoomsList = [
     summary:
       "Recently decorated, the Royal Chamber has the unique benefit of being the only room that is fit for purpose. Decor taken straight from a council house, you never have to worry about scuffing walls or staining the floor, it's already been done for you!",
     icon: [ShowerIcon],
+    hero: throne,
   },
   {
     title: "The Spare",
@@ -57,6 +70,7 @@ const RoomsList = [
     summary:
       "'The Heir and the Spare' - such as in royal circles, the spare is just as equaly unloved and forgotten about. Carpets not replaced, cracks patched badly, and paint job from at least 10 years ago, this is the place no-one wants to be.",
     icon: [PersonIcon, PersonIcon],
+    hero: spare,
   },
   {
     title: "The Nook",
@@ -64,6 +78,7 @@ const RoomsList = [
     icon: [MenuBookIcon],
     summary:
       "With just enough space to swing a cat (not that we've tried), the nook is perfect for those who prefer the company of books to real people.",
+    hero: nook,
   },
   {
     title: "The Main Act",
@@ -71,13 +86,13 @@ const RoomsList = [
     summary:
       "With a double bed and a super king duvet, you'll want to stay in bed for you're whole visit (partially as the heating won't be on).",
     icon: [PersonIcon, PersonIcon],
+    hero: master,
   },
 ];
 const Rooms = (props) => {
   const [open, setOpen] = useState(false);
   const [modal, updateModal] = useState({});
   const handler = (room) => () => {
-    console.log(room);
     setOpen((open) => !open);
     updateModal(room || {});
   };
@@ -109,27 +124,37 @@ const Rooms = (props) => {
           </IconButton>
         </DialogTitle>
         <DialogContent>
-          <Typography>{modal.summary}</Typography>
+          <Stack sx={{ alignItems: "center" }} spacing={2}>
+            <img
+              src={modal.hero}
+              alt={modal.title}
+              style={{ height: "15rem" }}
+            />
+            <Typography>{modal.summary}</Typography>
+          </Stack>
         </DialogContent>
       </Dialog>
     </>
   );
 };
 
-const createRoom = ({ title, headline }, moreDetails) => (
+const createRoom = ({ title, headline, hero }, moreDetails) => (
   <Card
     sx={{
-      height: "15rem",
+      height: "20rem",
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-between",
     }}
   >
+    <CardHeader title={title} />
+    <CardMedia
+      component="img"
+      image={hero}
+      sx={{ objectFit: "cover", height: "5.5rem" }}
+    />
     <CardContent>
-      <Typography gutterBottom variant="h5" component="h2">
-        {title}
-      </Typography>
-      <Typography>{headline}</Typography>
+      <Typography variant="body1">{headline}</Typography>
     </CardContent>
     <CardActions>
       <Button size="small" onClick={moreDetails}>

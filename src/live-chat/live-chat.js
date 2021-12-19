@@ -40,16 +40,27 @@ const LiveChat = (props) => {
   };
 
   const generateReply = useCallback(() => {
-    console.log("replying");
     const [{ message: lastMessage }] = messages.slice(-1);
     const reply = () => {
       newMessage((stack) => {
         const newStack = [...stack];
         newStack.splice(-1);
-        const message =
-          Math.random() * 10 > 5
-            ? `I'm sorry, I didn't understand what you meant by "${lastMessage}". Please can you explain what you meant.`
-            : "Hello, are you still there?";
+        let message = "";
+        if (lastMessage.includes("help")) {
+          message = "How can I help?";
+        }
+        if (lastMessage.includes("booking")) {
+          message = "You'd like to make a booking?";
+        }
+        if (lastMessage.includes("yes")) {
+          message =
+            "Thank you for confirming. I'm afraid I can't help with that.";
+        } else {
+          message =
+            Math.round(Math.random()) === 0
+              ? "Hello, are you still there?"
+              : `I'm sorry, I didn't understand what you meant by "${lastMessage}". Please can you explain what you meant.`;
+        }
         newStack.push({
           type: "reply",
           time: Date.now(),
@@ -66,7 +77,6 @@ const LiveChat = (props) => {
   useEffect(() => {
     latestMessage.current && latestMessage.current.scrollIntoView();
     if (!messages || messages.slice(-1)[0].type !== "user") return;
-    console.log(messages);
     generateReply();
   }, [JSON.stringify(messages), generateReply]);
 

@@ -14,12 +14,15 @@ import {
   DialogTitle,
   DialogContent,
   IconButton,
+  CircularProgress,
+  Backdrop,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { RoomsList } from "../rooms";
 import moment from "moment";
 import { Formik, Form, Field } from "formik";
 import { TextField, CheckboxWithLabel } from "formik-mui";
+import { v4 as uuidv4 } from "uuid";
 
 const BookingForm = () => {
   const theme = useTheme();
@@ -31,7 +34,7 @@ const BookingForm = () => {
   const id = parseInt(searchParams.get("id"));
   const [bookingRef, confirmBooking] = useState("");
   const [termsOpen, showTerms] = useState(false);
-  const [error, setError] = useState({});
+  const [loading, showLoading] = useState(false);
   const toggleTerms = (e) => {
     e.preventDefault();
     showTerms((open) => !open);
@@ -42,30 +45,25 @@ const BookingForm = () => {
       checkIn: `${checkIn.format("DD/MM/YY")}`,
       checkOut: `${checkOut.format("DD/MM/YY")}`,
       room: RoomsList[id].title,
+      id: uuidv4(),
     };
-    await fetch("/api/booking", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        console.log(json);
-        confirmBooking({
-          ...json,
-          ...body,
-        });
-      })
-      .catch((e) => {
-        console.error(e);
-        setError(e);
-      });
+    showLoading(true);
+    setTimeout(() => {
+      confirmBooking(body);
+      showLoading(false);
+    }, 3000);
   };
 
   return (
     <>
+      {loading ? (
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open={loading}
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      ) : null}
       {bookingRef ? (
         <Stack spacing={1}>
           <Alert severity="success">Booking successful</Alert>
@@ -84,11 +82,6 @@ const BookingForm = () => {
         </Stack>
       ) : (
         <Grid container spacing={2}>
-          <Grid item xs={12}>
-            {error ? (
-              <Alert severity="error">{JSON.stringify(error)}</Alert>
-            ) : null}
-          </Grid>
           <Grid item xs={12}>
             <Typography variant="h6">{`Selected room: ${RoomsList[id].title}`}</Typography>
             <Typography variant="h6">

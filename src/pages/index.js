@@ -5,4 +5,14 @@ import { Rooms } from "./rooms";
 import { Xmas } from "./xmas";
 import { Testimonials } from "./testimonials";
 import { Home } from "./home";
-export { Home, About, Booking, Rooms, Xmas, Testimonials, BookingForm };
+import { Contact } from "./contact";
+export {
+  Home,
+  About,
+  Booking,
+  Rooms,
+  Xmas,
+  Testimonials,
+  BookingForm,
+  Contact,
+};

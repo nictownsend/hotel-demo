@@ -39,7 +39,7 @@ const App = () => {
               </Routes>
             </Grid>
             <Grid item lg={3} />
-            <Grid item xs={12} lg={6}>
+            <Grid item xs={12} lg={6} sx={{ flexGrow: 1 }}>
               <Content />
             </Grid>
             <Grid item lg={3} />

@@ -2,7 +2,6 @@ import React from "react";
 import { ReactComponent as Logo } from "../images/logo-sm.svg";
 import { Grid } from "@mui/material";
 import { NavBar } from "../navbar";
-import { Box } from "@mui/system";
 const Header = () => (
   <Grid
     container

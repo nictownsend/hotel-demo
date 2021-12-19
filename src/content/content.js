@@ -9,6 +9,7 @@ import {
   Xmas,
   Testimonials,
   BookingForm,
+  Contact,
 } from "../pages";
 const Content = (props) => (
   <Box sx={{ padding: "2rem" }}>
@@ -20,6 +21,7 @@ const Content = (props) => (
       <Route path="/rooms" element={<Rooms />} />
       <Route path="/xmas-2021" element={<Xmas />} />
       <Route path="/testimonials" element={<Testimonials />} />
+      <Route path="/contact" element={<Contact />} />
     </Routes>
   </Box>
 );

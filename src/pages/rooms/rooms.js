@@ -36,7 +36,7 @@ const RoomsList = [
     title: "Wizard",
     headline: "As lucky as Harry",
     summary:
-      "This freshly fragranced cosy space is ideal for those soffering from covid. With an adjacent bathroom you can enjoy all the sounds and smells of your fellow guests.",
+      "This freshly fragranced cosy space is ideal for those suffering from Covid. With an adjacent bathroom you can enjoy all the sounds but not the smells of your fellow guests.",
     icon: [AutoFixHighIcon],
     hero: stairs,
   },
@@ -45,14 +45,14 @@ const RoomsList = [
     headline: "Mind your head",
     icon: [BungalowIcon],
     summary:
-      "Squirrels and spiders and bats, oh my! Sleep among the eaves in this rustic paradise. Cobwebs offer perfect insulation in the spacacious room, but don't worry - the missing lead means there's plenty of ventilation.",
+      "Squirrels and spiders and bats, oh my! Sleep among the eaves in this rustic paradise. Cobwebs offer perfect insulation in this spacious and airy room - the missing lead means there's plenty of ventilation.",
     hero: attic,
   },
   {
     title: "Glamping",
     headline: "Bring an umbrella",
     summary:
-      "Experience the great outdoors in our glamping area. With views across the fence into a wide open forest, who knows who might be watching you back at night.",
+      "Experience the great outdoors in our glamping area. With views over the fence into a wide open forest, who knows who might be watching you back at night.",
     icon: [NightsStayIcon, NightsStayIcon],
     hero: glamping,
   },
@@ -60,7 +60,7 @@ const RoomsList = [
     title: "The Royal Chamber",
     headline: "Don't forget to flush",
     summary:
-      "Recently decorated, the Royal Chamber has the unique benefit of being the only room that is fit for purpose. Decor taken straight from a council house, you never have to worry about scuffing walls or staining the floor, it's already been done for you!",
+      "Crying out to be newly decorated, the Royal Chamber has the unique benefit of being the only room that is fit for purpose. Decor taken straight from a council house, you never have to worry about scuffing walls or staining the floor, it's already been done for you!",
     icon: [ShowerIcon],
     hero: throne,
   },
@@ -68,7 +68,7 @@ const RoomsList = [
     title: "The Spare",
     headline: "Size doesn't matter",
     summary:
-      "'The Heir and the Spare' - such as in royal circles, the spare is just as equaly unloved and forgotten about. Carpets not replaced, cracks patched badly, and paint job from at least 10 years ago, this is the place no-one wants to be.",
+      "'The Heir and the Spare' - just like in royal circles, the spare is just as equally unloved and forgotten about. Carpets not replaced, cracks patched badly and a paint job from at least 10 years ago. This is the place no-one wants to be.",
     icon: [PersonIcon, PersonIcon],
     hero: spare,
   },
@@ -84,7 +84,7 @@ const RoomsList = [
     title: "The Main Act",
     headline: "Room for two",
     summary:
-      "With a double bed and a super king duvet, you'll want to stay in bed for you're whole visit (partially as the heating won't be on).",
+      "With a double bed and a super king duvet, you'll want to stay in bed for your whole visit (but probably just because the heating won't be on).",
     icon: [PersonIcon, PersonIcon],
     hero: master,
   },

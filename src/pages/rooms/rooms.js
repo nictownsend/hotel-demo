@@ -68,7 +68,7 @@ const RoomsList = [
     title: "The Spare",
     headline: "Size doesn't matter",
     summary:
-      "'The Heir and the Spare' - just like in royal circles, the spare is just as equally unloved and forgotten about. Carpets not replaced, cracks patched badly and a paint job from at least 10 years ago. This is the place no-one wants to be.",
+      "'The Heir and the Spare' - just like in royal circles, this spare is just as equally unloved and forgotten about. Carpets not replaced, cracks patched badly and a paint job from at least 10 years ago. This is the place no-one wants to be.",
     icon: [PersonIcon, PersonIcon],
     hero: spare,
   },

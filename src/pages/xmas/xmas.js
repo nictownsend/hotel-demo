@@ -51,7 +51,7 @@ const Xmas = () => (
         <Typography variant="caption">
           Xmas pudding
           <br />
-          Non-fruit Bombe
+          Yule log
           <br />
         </Typography>
         <Typography variant="h6">Drinks</Typography>

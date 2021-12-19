@@ -75,7 +75,7 @@ const BookingForm = () => {
           >{`Check in: ${bookingRef.checkIn}`}</Typography>
           <Typography
             variant={"subtitle1"}
-          >{`Check in: ${bookingRef.checkOut}`}</Typography>
+          >{`Check out: ${bookingRef.checkOut}`}</Typography>
           <Typography
             variant={"subtitle1"}
           >{`Room: ${bookingRef.room}`}</Typography>
